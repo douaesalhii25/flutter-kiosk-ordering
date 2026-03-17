@@ -1,17 +1,33 @@
-# flutter_kiosk_ordering
+# Flutter Kiosk Ordering App
 
-A new Flutter project.
+A cross-platform Flutter application (iOS, Android, Web, Windows, macOS, Linux) that simulates a kiosk ordering system.  
+Users can browse menus, add items to a cart, and view an order summary — all without online payment.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+##  Features
+- Menu browsing with categories
+- Cart management (add/remove items)
+- Order summary screen
+- Cross-platform support (mobile, desktop, web)
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+##  Project Structure
+- `lib/` → main Dart source code
+- `screens/` → app screens (menu, cart, summary)
+- `models/` → data models
+- `widgets/` → reusable UI components
+
+
+
+##  Tech Stack
+- Flutter (Dart)
+- GitHub for version control
+- Cross-platform deployment
+
+
+
+##  Author
+Developed by Douae Salhi 
+Bachelor in Computer Science and Technology, SWPU Chengdu  
