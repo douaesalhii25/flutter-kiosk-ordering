@@ -5,7 +5,7 @@ class ItemCard extends StatelessWidget {
   final FoodItem item;
   final VoidCallback onTap;
 
-  const ItemCard({Key? key, required this.item, required this.onTap}) : super(key: key);
+  const ItemCard({super.key, required this.item, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ import 'payment_screen.dart';
 class CheckoutScreen extends StatefulWidget {
   final Order order;
 
-  const CheckoutScreen({Key? key, required this.order}) : super(key: key);
+  const CheckoutScreen({super.key, required this.order});
 
   @override
   State<CheckoutScreen> createState() => _CheckoutScreenState();
@@ -109,16 +109,19 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (ctx) => PaymentScreen(total: totalPrice),
-                  ),
-                );
-              },
-              child: const Text('Proceed to Payment'),
-            ),
+             onPressed: () {
+            Navigator.push(
+            context,
+             MaterialPageRoute(
+             builder: (ctx) => PaymentScreen(
+             total: totalPrice,
+             order: widget.order, // pass the order here
+        ),
+      ),
+    );
+  },
+  child: const Text('Proceed to Payment'),
+),
           ],
         ),
       ),

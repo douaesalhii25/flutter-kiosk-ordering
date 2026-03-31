@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kiosk_ordering/models/order.dart';
 
 class PaymentScreen extends StatelessWidget {
   final double total;
 
-  const PaymentScreen({Key? key, required this.total}) : super(key: key);
+  const PaymentScreen({super.key, required this.total, required Order order});
 
   void _showConfirmation(BuildContext context, String method) {
     ScaffoldMessenger.of(context).showSnackBar(
