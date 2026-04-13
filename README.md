@@ -1,17 +1,30 @@
-# kiosk_app
+# Flutter Kiosk Ordering App
 
-A new Flutter project.
+##  Author
+**Douae Salhi**  
+3rd-year Computer Science major at **Southwest Petroleum University (SWPU), Chengdu, China**.  
+Passionate about mobile development (Flutter/Dart, Android/Java) and full-stack workflows.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+##  Project Overview
+This project is a Flutter application designed for kiosk-style ordering.  
+It runs on Android using the Android SDK and Emulator for development and testing.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+##  Environment Setup
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 1. Install Requirements
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- [Android Studio](https://developer.android.com/studio)
+- Git (already installed)
+
+### 2. Configure Android SDK
+Open **Android Studio → Settings → Languages & Frameworks → Android SDK**:
+-  Install **Android SDK Platform-Tools** (provides `adb.exe`)
+-  Install/Update **Android Emulator** (provides `emulator.exe`)
+-  Install **Android SDK Build-Tools** (latest version)
+
+### 3. Set Environment Variables (Windows)
+Add the following paths to your **User Path** environment variable:
