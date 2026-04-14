@@ -15,7 +15,7 @@ class WelcomeScreen extends StatelessWidget {
             const Icon(Icons.favorite, color: Colors.pinkAccent, size: 80),
             const SizedBox(height: 20),
             const Text(
-              "Welcome to Italiano Restaurant ❤️",
+              "Welcome to Italiano Restaurant ",
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,

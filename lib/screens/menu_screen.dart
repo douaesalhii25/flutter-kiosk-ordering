@@ -4,9 +4,12 @@ import '../models/food_items.dart';
 import '../models/order.dart';
 import '../widgets/item_card.dart';
 import 'checkout_screen.dart';
+import 'cart_screen.dart';
 
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key, required String category});
+  final String category; // store the category
+
+  const MenuScreen({super.key, required this.category});
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
@@ -176,14 +179,21 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Italian Menu'),
+        title: Text('${widget.category} Menu'),
         actions: [
           Stack(
             alignment: Alignment.center,
             children: [
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
-                onPressed: goToCheckout,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (ctx) => CartScreen(order: order),
+                    ),
+                  );
+                },
               ),
               if (order.items.isNotEmpty)
                 Positioned(
@@ -211,6 +221,18 @@ class _MenuScreenState extends State<MenuScreen> {
           final item = items[index];
           return ItemCard(item: item, onTap: () => addToCart(item));
         },
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(12),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (ctx) => CartScreen(order: order)),
+            );
+          },
+          child: const Text("Go to Cart ❤️"),
+        ),
       ),
     );
   }
