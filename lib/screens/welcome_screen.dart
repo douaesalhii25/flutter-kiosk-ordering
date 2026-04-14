@@ -1,9 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_app/services/cache_services.dart';
 import 'menu_screen.dart';
 import 'nearest_screen.dart';
+import '../services/cache_services.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  String? lastRestaurant;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLastRestaurant();
+  }
+
+  Future<void> _loadLastRestaurant() async {
+    final last = await CacheService.loadRestaurant();
+    if (last != null) {
+      setState(() {
+        lastRestaurant = last;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +48,13 @@ class WelcomeScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
+            const SizedBox(height: 10),
+
+            if (lastRestaurant != null)
+              Text(
+                "Last visited: $lastRestaurant",
+                style: const TextStyle(color: Colors.white, fontSize: 18),
+              ),
             const SizedBox(height: 30),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

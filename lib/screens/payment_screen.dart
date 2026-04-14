@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/order.dart';
 import 'confirmation_screen.dart';
+import '../services/cache_services.dart';
 
 class PaymentScreen extends StatelessWidget {
   final double total;
@@ -8,9 +9,11 @@ class PaymentScreen extends StatelessWidget {
 
   const PaymentScreen({super.key, required this.total, this.order});
 
-  void _showConfirmation(BuildContext context, String method) {
+  Future<void> _showConfirmation(BuildContext context, String method) async {
     // Clear cart
     order?.items.clear();
+
+    await CacheService.saveCartTotal(0.0);
 
     // Navigate to confirmation screen
     Navigator.pushReplacement(

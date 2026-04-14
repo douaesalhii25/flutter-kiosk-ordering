@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:math';
+import '../services/cache_services.dart';
 
 class NearestScreen extends StatefulWidget {
   const NearestScreen({super.key});
@@ -37,6 +38,7 @@ class _NearestScreenState extends State<NearestScreen> {
     setState(() {
       nearestRestaurant = "$randomPlace Italiano Restaurant";
     });
+    await CacheService.saveRestaurant(nearestRestaurant!);
   }
 
   @override
