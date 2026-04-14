@@ -5,6 +5,7 @@ import 'nearest_screen.dart';
 // ignore: duplicate_import
 import '../services/cache_services.dart';
 import 'canvas_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -39,7 +40,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.favorite, color: Colors.pinkAccent, size: 80),
+            SvgPicture.asset(
+              'assets/icons/heart.svg',
+              width: 60,
+              height: 60,
+              color: Colors.white, // optional tint
+            ),
             const SizedBox(height: 20),
             const Text(
               "Welcome to Italiano Restaurant ",
