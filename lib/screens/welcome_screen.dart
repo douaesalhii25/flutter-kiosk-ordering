@@ -67,6 +67,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               },
               child: const Text("Canvas Demo"),
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
