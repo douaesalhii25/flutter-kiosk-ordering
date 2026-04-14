@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'menu_screen.dart';
+import 'nearest_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -45,6 +46,27 @@ class WelcomeScreen extends StatelessWidget {
                 );
               },
               child: const Text("Enter Menu"),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: const Color(0xFF800020),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 40,
+                  vertical: 12,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (ctx) => const NearestScreen()),
+                );
+              },
+              child: const Text("Nearest Italiano to me"),
             ),
           ],
         ),
