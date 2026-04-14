@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kiosk_app/services/cache_services.dart';
 import 'menu_screen.dart';
 import 'nearest_screen.dart';
+// ignore: duplicate_import
 import '../services/cache_services.dart';
+import 'canvas_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -56,6 +58,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 style: const TextStyle(color: Colors.white, fontSize: 18),
               ),
             const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (ctx) => const CanvasScreen()),
+                );
+              },
+              child: const Text("Canvas Demo"),
+            ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,

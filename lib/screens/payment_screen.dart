@@ -17,6 +17,7 @@ class PaymentScreen extends StatelessWidget {
 
     // Navigate to confirmation screen
     Navigator.pushReplacement(
+      // ignore: use_build_context_synchronously
       context,
       MaterialPageRoute(builder: (ctx) => const ConfirmationScreen()),
     );
