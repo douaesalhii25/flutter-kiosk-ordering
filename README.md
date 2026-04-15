@@ -27,4 +27,4 @@ This project is a Flutter-based kiosk and mobile ordering application created to
 
 ## About me
 I am **Douae Salhi**, a **third‑year Computer Science undergraduate at SWPU Chengdu**.  
-I am actively preparing for my Master’s studies in Paris, and projects like this kiosk app are part of how I build my portfolio to show recruiters my skills in Flutter, Android/Java, and creative UI design.
+I am actively preparing for my Master’s studies , and projects like this kiosk app are part of how I build my portfolio to show recruiters my skills in Flutter, Android/Java, and creative UI design.
