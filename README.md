@@ -1,64 +1,30 @@
-# Flutter Kiosk Ordering App
+# Italiano Restaurant Kiosk App
 
-<<<<<<< HEAD
-A cross-platform Flutter application (iOS, Android, Web, Windows, macOS, Linux) that simulates a kiosk ordering system.  
-Users can browse menus, add items to a cart, and view an order summary — all without online payment.
-
-
-
-##  Features
-- Menu browsing with categories
-- Cart management (add/remove items)
-- Order summary screen
-- Cross-platform support (mobile, desktop, web)
-
-
-
-##  Project Structure
-- `lib/` → main Dart source code
-- `screens/` → app screens (menu, cart, summary)
-- `models/` → data models
-- `widgets/` → reusable UI components
-
-
-
-##  Tech Stack
-- Flutter (Dart)
-- GitHub for version control
-- Cross-platform deployment
-
-
-
-##  Author
-Developed by Douae Salhi 
-Bachelor in Computer Science and Technology, SWPU Chengdu  
-=======
-##  Author
-**Douae Salhi**  
-3rd-year Computer Science major at **Southwest Petroleum University (SWPU), Chengdu, China**.  
-Passionate about mobile development (Flutter/Dart, Android/Java) and full-stack workflows.
+This project is a Flutter-based kiosk and mobile ordering application created to simulate a restaurant ordering flow with polished UI and smooth navigation.
 
 ---
 
-##  Project Overview
-This project is a Flutter application designed for kiosk-style ordering.  
-It runs on Android using the Android SDK and Emulator for development and testing.
+## What the app includes
+- Welcome screen with animated Italian flag, wine glass canvas, and styled fonts.
+- Menu, Cart, Checkout, Payment, and Confirmation screens with consistent red/white theme.
+- Nearest Restaurant screen:
+  - Red background consistent with other screens.
+  - Location button with a location icon.
+  - Uses the geolocator package to request location access.
+  - Displays a random street in Chengdu with the message:  
+    *“Italiano Restaurant is the nearest to your location at [Street].”*
+- Payment screen with card and cash icons.
+- Confirmation screen with animated checkmark for a polished finish.
 
 ---
 
-##  Environment Setup
+## Tech stack
+- Flutter & Dart for cross‑platform development.
+- Geolocator package for location services.
+- Canvas animations for creative UI polish.
 
-### 1. Install Requirements
-- [Flutter SDK](https://docs.flutter.dev/get-started/install)
-- [Android Studio](https://developer.android.com/studio)
-- Git (already installed)
+---
 
-### 2. Configure Android SDK
-Open **Android Studio → Settings → Languages & Frameworks → Android SDK**:
--  Install **Android SDK Platform-Tools** (provides `adb.exe`)
--  Install/Update **Android Emulator** (provides `emulator.exe`)
--  Install **Android SDK Build-Tools** (latest version)
-
-### 3. Set Environment Variables (Windows)
-Add the following paths to your **User Path** environment variable:
->>>>>>> 85879e2ec5cd8aeff582ee7f84a53baac9036f4c
+## About me
+I am **Douae Salhi**, a **third‑year Computer Science undergraduate at SWPU Chengdu**.  
+I am actively preparing for my Master’s studies in Paris, and projects like this kiosk app are part of how I build my portfolio to show recruiters my skills in Flutter, Android/Java, and creative UI design.
