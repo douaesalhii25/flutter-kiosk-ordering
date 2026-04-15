@@ -40,7 +40,7 @@ class ItemCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black, // readable on white card
+                        color: Colors.black, // ✅ dish names in black
                       ),
                     ),
                     Text(
@@ -52,14 +52,14 @@ class ItemCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF800020), // Burgundy accent for price
+                        color: Colors.black, // ✅ price in black
                       ),
                     ),
                   ],
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.add_shopping_cart, color: Colors.green),
+                icon: const Icon(Icons.add_shopping_cart, color: Colors.red),
                 onPressed: onTap,
               ),
             ],

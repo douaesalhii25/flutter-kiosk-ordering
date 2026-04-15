@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'dart:math';
-import '../services/cache_services.dart';
 
 class NearestScreen extends StatefulWidget {
   const NearestScreen({super.key});
@@ -11,34 +9,50 @@ class NearestScreen extends StatefulWidget {
 }
 
 class _NearestScreenState extends State<NearestScreen> {
-  String? nearestRestaurant;
+  String locationMessage = "Press the button to get location";
 
-  Future<void> _findNearest() async {
-    LocationPermission permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied ||
-        permission == LocationPermission.deniedForever) {
+  Future<void> _getLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Check if location services are enabled
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
       setState(() {
-        nearestRestaurant = "Location permission denied.";
+        locationMessage = "Location services are disabled.";
       });
       return;
     }
 
-    await Geolocator.getCurrentPosition();
+    // Check permission
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        setState(() {
+          locationMessage = "Location permission denied.";
+        });
+        return;
+      }
+    }
 
-    final places = [
-      "Chengdu",
-      "Paris",
-      "Rome",
-      "Casablanca",
-      "New York",
-      "Tokyo",
-    ];
-    final randomPlace = places[Random().nextInt(places.length)];
+    if (permission == LocationPermission.deniedForever) {
+      setState(() {
+        locationMessage =
+            "Location permissions are permanently denied. Enable them in Settings.";
+      });
+      return;
+    }
+
+    // ✅ Get current position
+    Position pos = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
 
     setState(() {
-      nearestRestaurant = "$randomPlace Italiano Restaurant";
+      locationMessage =
+          "Latitude: ${pos.latitude}, Longitude: ${pos.longitude}";
     });
-    await CacheService.saveRestaurant(nearestRestaurant!);
   }
 
   @override
@@ -49,19 +63,15 @@ class _NearestScreenState extends State<NearestScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (nearestRestaurant == null)
-              ElevatedButton(
-                onPressed: _findNearest,
-                child: const Text("Allow Location"),
-              )
-            else
-              Text(
-                "Nearest: $nearestRestaurant",
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            Text(
+              locationMessage,
+              style: const TextStyle(fontSize: 18, color: Colors.red),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _getLocation,
+              child: const Text("Get My Location"),
+            ),
           ],
         ),
       ),

@@ -5,19 +5,17 @@ import '../services/cache_services.dart';
 
 class PaymentScreen extends StatelessWidget {
   final double total;
-  final Order? order; // make it optional so we can clear cart
+  final Order? order;
 
   const PaymentScreen({super.key, required this.total, this.order});
 
   Future<void> _showConfirmation(BuildContext context, String method) async {
-    // Clear cart
     order?.items.clear();
-
     await CacheService.saveCartTotal(0.0);
 
-    // Navigate to confirmation screen
+    if (!context.mounted) return; // ✅ safe check
+
     Navigator.pushReplacement(
-      // ignore: use_build_context_synchronously
       context,
       MaterialPageRoute(builder: (ctx) => const ConfirmationScreen()),
     );
@@ -26,44 +24,54 @@ class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Payment")),
+      backgroundColor: Colors.red,
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text("Payment", style: TextStyle(color: Colors.white)),
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // centers vertically
-          crossAxisAlignment: CrossAxisAlignment.center, // centers horizontally
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               "Total to pay: €${total.toStringAsFixed(2)}",
               style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: Colors.white, // adjust for burgundy background
+                color: Colors.white,
               ),
             ),
             const SizedBox(height: 24),
-            ElevatedButton(
+
+            // 💳 Card payment button with icon
+            ElevatedButton.icon(
               onPressed: () => _showConfirmation(context, "Card"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
-                minimumSize: const Size(200, 50),
+                foregroundColor: Colors.red,
+                minimumSize: const Size(220, 50),
               ),
-              child: const Text("Pay with Card"),
+              icon: const Icon(Icons.credit_card, color: Colors.red),
+              label: const Text("Pay with Card"),
             ),
+
             const SizedBox(height: 12),
-            ElevatedButton(
+
+            // 💵 Cash payment button with icon
+            ElevatedButton.icon(
               onPressed: () => _showConfirmation(context, "Cash"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
-                minimumSize: const Size(200, 50),
+                foregroundColor: Colors.red,
+                minimumSize: const Size(220, 50),
               ),
-              child: const Text("Pay with Cash"),
+              icon: const Icon(Icons.attach_money, color: Colors.red),
+              label: const Text("Pay with Cash"),
             ),
           ],
         ),
       ),
-      backgroundColor: const Color(0xFF800020), // burgundy background
     );
   }
 }

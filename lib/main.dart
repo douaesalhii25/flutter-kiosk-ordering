@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kiosk_app/screens/welcome_screen.dart';
+import 'package:kiosk_app/screens/welcome_screen.dart'; // ✅ this file exists
+
+void main() {
+  runApp(const KioskApp());
+}
 
 class KioskApp extends StatelessWidget {
   const KioskApp({super.key});
@@ -16,7 +20,7 @@ class KioskApp extends StatelessWidget {
           primarySwatch: Colors.red,
         ).copyWith(secondary: Colors.pinkAccent),
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.black),
           titleLarge: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
@@ -26,8 +30,8 @@ class KioskApp extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.white,
-            foregroundColor: Color(0xFF800020),
-            shape: RoundedRectangleBorder(
+            foregroundColor: const Color(0xFF800020),
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
           ),
@@ -36,8 +40,4 @@ class KioskApp extends StatelessWidget {
       home: const WelcomeScreen(),
     );
   }
-}
-
-void main() {
-  runApp(const KioskApp());
 }

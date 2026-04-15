@@ -59,28 +59,49 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(category,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(
+          category,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.white, // ✅ category in white
+          ),
+        ),
         ...items.map((item) {
           final qty = quantities[item.id] ?? 0;
           return ListTile(
-            title: Text(item.name),
-            subtitle: Text('€${item.price.toStringAsFixed(2)}'),
+            title: Text(
+              item.name,
+              style: const TextStyle(
+                color: Colors.white, // ✅ dish names in white
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              '€${item.price.toStringAsFixed(2)}',
+              style: const TextStyle(
+                color: Colors.white, // ✅ prices in white
+                fontSize: 14,
+              ),
+            ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
-                    icon: const Icon(Icons.remove),
-                    onPressed: () => decreaseQuantity(item)),
-                Text('$qty'),
+                  icon: const Icon(Icons.remove, color: Colors.white),
+                  onPressed: () => decreaseQuantity(item),
+                ),
+                Text('$qty', style: const TextStyle(color: Colors.white)),
                 IconButton(
-                    icon: const Icon(Icons.add),
-                    onPressed: () => increaseQuantity(item)),
+                  icon: const Icon(Icons.add, color: Colors.white),
+                  onPressed: () => increaseQuantity(item),
+                ),
               ],
             ),
           );
         }),
-        const Divider(),
+        const Divider(color: Colors.white),
       ],
     );
   }
@@ -88,7 +109,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Checkout')),
+      backgroundColor: Colors.red, // ✅ flag red background
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text('Checkout', style: TextStyle(color: Colors.white)),
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -102,26 +128,38 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ],
               ),
             ),
-            const Divider(),
+            const Divider(color: Colors.white),
             Text(
               'Total: €${totalPrice.toStringAsFixed(2)}',
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.white, // ✅ total in white
+              ),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-             onPressed: () {
-            Navigator.push(
-            context,
-             MaterialPageRoute(
-             builder: (ctx) => PaymentScreen(
-             total: totalPrice,
-             order: widget.order, // pass the order here
-        ),
-      ),
-    );
-  },
-  child: const Text('Proceed to Payment'),
-),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white, // button background
+                foregroundColor: Colors.red, // text color matches flag red
+                padding: const EdgeInsets.symmetric(vertical: 14),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (ctx) => PaymentScreen(
+                      total: totalPrice,
+                      order: widget.order, // pass the order here
+                    ),
+                  ),
+                );
+              },
+              child: const Text(
+                'Proceed to Payment',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
           ],
         ),
       ),

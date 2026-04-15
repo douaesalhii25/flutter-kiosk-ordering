@@ -178,14 +178,20 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red, // Italian flag red background
       appBar: AppBar(
-        title: Text('${widget.category} Menu'),
+        backgroundColor: Colors.red, // match flag red
+        title: Text(
+          '${widget.category} Menu',
+          style: const TextStyle(color: Colors.white),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           Stack(
             alignment: Alignment.center,
             children: [
               IconButton(
-                icon: const Icon(Icons.shopping_cart),
+                icon: const Icon(Icons.shopping_cart, color: Colors.white),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -202,12 +208,12 @@ class _MenuScreenState extends State<MenuScreen> {
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: const BoxDecoration(
-                      color: Colors.red,
+                      color: Colors.white,
                       shape: BoxShape.circle,
                     ),
                     child: Text(
                       '${order.items.length}',
-                      style: const TextStyle(color: Colors.white, fontSize: 12),
+                      style: const TextStyle(color: Colors.red, fontSize: 12),
                     ),
                   ),
                 ),
@@ -225,13 +231,18 @@ class _MenuScreenState extends State<MenuScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(12),
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.red,
+            padding: const EdgeInsets.symmetric(vertical: 14),
+          ),
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (ctx) => CartScreen(order: order)),
             );
           },
-          child: const Text("Go to Cart ❤️"),
+          child: const Text("Go to Cart"),
         ),
       ),
     );
